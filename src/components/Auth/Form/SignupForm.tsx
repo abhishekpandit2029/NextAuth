@@ -3,7 +3,6 @@
 import React from "react";
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import LockResetIcon from "@mui/icons-material/LockReset";
 import PersonIcon from "@mui/icons-material/Person";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -11,7 +10,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function RegisterForm() {
-  const router = useRouter();
+  const { replace } = useRouter();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
@@ -25,7 +24,7 @@ export default function RegisterForm() {
       setLoading(true);
       const response = await axios.post("/api/users/signup", user);
       console.log("Signup success", response.data);
-      router.push("/login");
+      replace("/login");
 
     } catch (error: any) {
       console.log("Signup failed", error.message);

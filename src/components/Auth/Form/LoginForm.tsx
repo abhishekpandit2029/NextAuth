@@ -7,14 +7,12 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import Login from "@/components/Auth/General/Login/Login";
 
 export default function LoginForm() {
-  const router = useRouter();
+  const { replace } = useRouter();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-
   })
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -26,7 +24,7 @@ export default function LoginForm() {
       const response = await axios.post("/api/users/login", user);
       console.log("Login success", response.data);
       toast.success("Login success");
-      router.push("/profile");
+      replace("/profile");
     } catch (error: any) {
       console.log("Login failed", error.message);
       toast.error(error.message);

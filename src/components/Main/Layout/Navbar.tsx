@@ -18,19 +18,19 @@ function Navbar() {
         </Link>
       </div>
       <div className="flex items-center space-x-8">
-        <Link
-          className={currentRoute === "/" ? activeStyle : nonActiveStyle}
-          href="/"
+        <a
+          className={currentRoute === "/home" ? activeStyle : nonActiveStyle}
+          href="/home"
         >
           Home
+        </a>
+        <Link
+          className={currentRoute === "/profile" ? activeStyle : nonActiveStyle}
+          href="/profile"
+        >
+          Profile
         </Link>
         {/* <Link
-          className={currentRoute === "/about" ? activeStyle : nonActiveStyle}
-          href="about"
-        >
-          About us
-        </Link>
-        <Link
           className={
             currentRoute === "/ourpursuits" ? activeStyle : nonActiveStyle
           }
