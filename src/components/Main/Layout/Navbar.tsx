@@ -5,75 +5,30 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/stuff/logo-removebg.png";
 import { usePathname } from "next/navigation";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import DailyQuill from "@/stuff/Red_Illustrated_Bull_Stock_Broker_Logo__1_-removebg-preview.png"
 
 function Navbar() {
-  const activeStyle = "text-teal-700 font-semibold";
-  const nonActiveStyle = "text-black font-normal";
-  const currentRoute = usePathname();
   return (
-    <nav className="flex justify-between items-center py-8 px-16 text-[15px]">
-      <div>
-        <Link href="/">
-          <Image alt="Logo" src={Logo} className="w-12 h-12" />
-        </Link>
-      </div>
-      <div className="flex items-center space-x-8">
-        <a
-          className={currentRoute === "/home" ? activeStyle : nonActiveStyle}
-          href="/home"
-        >
-          Home
+    <nav className="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
+      <div className="flex lg:flex-1">
+        <a href="/">
+          <Image
+            className="w-20"
+            src={DailyQuill}
+            alt="logo"
+          />
         </a>
-        <Link
-          className={currentRoute === "/profile" ? activeStyle : nonActiveStyle}
-          href="/profile"
-        >
-          Profile
-        </Link>
-        {/* <Link
-          className={
-            currentRoute === "/ourpursuits" ? activeStyle : nonActiveStyle
-          }
-          href="#"
-        >
-          Our pursuits
-        </Link>
-        <Link
-          className={
-            currentRoute === "/prospects" ? activeStyle : nonActiveStyle
-          }
-          href="#"
-        >
-          Prospects
-        </Link>
-        <Link
-          className={
-            currentRoute === "/testimonials" ? activeStyle : nonActiveStyle
-          }
-          href="#"
-        >
-          Testimonials
-        </Link>
-        <Link
-          className={currentRoute === "/faqs" ? activeStyle : nonActiveStyle}
-          href="#"
-        >
-          FAQ&#39;s
-        </Link>
-        <Link
-          className={
-            currentRoute === "/contactus" ? activeStyle : nonActiveStyle
-          }
-          href="#"
-        >
-          Contact us
-        </Link> */}
-        <Link
-          className={currentRoute === "/login" ? activeStyle : nonActiveStyle}
-          href="login"
-        >
-          <button className="rounded-lg border-2 py-2 px-3">SignIn</button>
-        </Link>
+      </div>
+
+      <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
+        <a className="text-base font-semibold leading-6 text-gray-900">
+          Create one!
+        </a>
+        <a href="/login" className="text-base font-semibold leading-6 text-gray-900">
+          Log in <span aria-hidden="true">&rarr;</span>
+        </a>
+        <AccountBoxIcon style={{ fontSize: "30px", }} />
       </div>
     </nav>
   );

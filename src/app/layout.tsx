@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "@/app/globals.css"
 import { Poppins } from "next/font/google";
 import Dashboardlayout from "@/components/Main/Layout/Dashboardlayout";
-
+import { TokenProvider } from "@/context/TokenProvider";
 
 const oppins = Poppins({
   subsets: ["latin"],
@@ -12,8 +11,8 @@ const oppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "NextGen",
-  description: "Home page of NextGen",
+  title: "DailyQuill",
+  description: "Home page of DailyQuill",
 };
 
 export default function RootLayout({
@@ -24,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={oppins.className}>
-        <Dashboardlayout>{children}</Dashboardlayout>
+        <TokenProvider>
+          <Dashboardlayout>
+            {children}
+          </Dashboardlayout></TokenProvider>
       </body></html>
   );
 }

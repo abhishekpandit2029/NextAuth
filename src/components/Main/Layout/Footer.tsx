@@ -1,18 +1,21 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
-import Logo from "@/stuff/logo-removebg.png";
+import Logo from "@/stuff/Red_Illustrated_Bull_Stock_Broker_Logo__1_-removebg-preview.png";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useMediaQuery } from "@mui/material";
 
 const FooterItemsArray = [
   {
     id: "1",
     items: "Products",
     subitems: [
-      "Why NextGen?",
+      "Why DailyQuill?",
       "Product Updates",
       "Security",
       "Status",
@@ -22,32 +25,17 @@ const FooterItemsArray = [
   },
   {
     id: "2",
-    items: "Resources",
-    subitems: [
-      "Marketing Library",
-      "Marketing Tools",
-      "Marketing Glossary",
-      "Integration Directory",
-    ],
-  },
-  {
-    id: "3",
     items: "Community",
     subitems: ["Agencies", "Freelancers", "Developers", "Events"],
-  },
-  {
-    id: "4",
-    items: "Company",
-    subitems: ["Careers", "Newsroom", "Our Story", "Accessibility"],
   },
 ];
 
 function FooterItems() {
   return (
-    <div className="flex space-x-16 text-[15px]">
+    <div className="flex space-x-12 flex-row flex-wrap justify-evenly text-[15px]">
       {FooterItemsArray.map((item) => (
         <div key={item.id}>
-          <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">
+          <h2 className="mb-2 text-md font-semibold text-gray-900 uppercase">
             {item.items}
           </h2>
           <ul className="text-gray-500 leading-7 dark:text-gray-400 font-medium">
@@ -65,18 +53,21 @@ function FooterItems() {
   );
 }
 
+
 function Footer() {
+  const MOBILE_BREAK_POINT = useMediaQuery("(max-width: 640px)");
+  const TABLET_BREAK_POINT = useMediaQuery("(max-width: 1024px)");
   return (
-    <div className="w-full flex flex-col px-16 py-6 space-y-8">
-      <div className="flex justify-between items-center">
-        <div className="flex flex-col space-y-4">
-          <div className="flex items-center space-x-3">
-            <Image src={Logo} className="w-11 h-11" alt="Logo" />
+    <div className="w-full flex flex-col px-4 tab:px-12 py-4 space-y-8">
+      <div className="flex justify-between items-center flex-col tab:flex-row space-y-4 tab:space-y-0">
+        <div className="flex flex-col items-center tab:items-start space-y-2 tab:space-y-4">
+          <div className="flex items-center ">
+            <Image src={Logo} className="w-16" alt="Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap">
-              Next<span className="text-teal-700">G</span>en
+              DailyQuill
             </span>
           </div>
-          <p className="text-[15px] w-[15rem]">
+          <p className="text-[15px] w-[15rem] hidden tab:flex">
             with new challenges, featured solutions, selected articles and our
             latest news
           </p>
@@ -92,52 +83,57 @@ function Footer() {
           </div>
         </div>
 
-        <div className="flex space-x-16 text-[15px]">
-          <FooterItems />
-          <div className="w-[15rem] flex flex-col">
-            <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">
-              Contact Us
-            </h2>
-            <p className="leading-6">
-              (555) 123-4567 support@nextgen.com 1234 Social Media Street Suite
-              567 Cityville, Digitaland 54321 United States
-            </p>
-            <div className="flex mt-4">
-              <FacebookIcon
-                style={{ fontSize: "25px" }}
-                className="hover:text-teal-700 cursor-pointer mr-2"
-              />
-              <TwitterIcon
-                style={{ fontSize: "25px" }}
-                className="hover:text-teal-700 cursor-pointer mx-2"
-              />
-              <LinkedInIcon
-                style={{ fontSize: "25px" }}
-                className="hover:text-teal-700 cursor-pointer mx-2"
-              />
-              <InstagramIcon
-                style={{ fontSize: "25px" }}
-                className="hover:text-teal-700 cursor-pointer mx-2"
-              />
-              <YouTubeIcon
-                style={{ fontSize: "25px" }}
-                className="hover:text-teal-700 cursor-pointer ml-2"
-              />
+        {
+          !MOBILE_BREAK_POINT &&
+          <div className="flex space-x-12 text-[15px]">
+            {!TABLET_BREAK_POINT && <FooterItems />}
+            <div className="w-[15rem] flex flex-col">
+              <h2 className="mb-2 text-md font-semibold text-gray-900 uppercase">
+                Contact Us
+              </h2>
+              <p className="leading-6">
+                (555) 123-4567 support@DailyQuill.com 1234 Social Media Street Suite
+                567 Cityville, Digitaland 54321 United States
+              </p>
+              <div className="flex mt-4">
+                <FacebookIcon
+                  style={{ fontSize: "25px" }}
+                  className="hover:text-teal-700 cursor-pointer mr-2"
+                />
+                <TwitterIcon
+                  style={{ fontSize: "25px" }}
+                  className="hover:text-teal-700 cursor-pointer mx-2"
+                />
+                <LinkedInIcon
+                  style={{ fontSize: "25px" }}
+                  className="hover:text-teal-700 cursor-pointer mx-2"
+                />
+                <InstagramIcon
+                  style={{ fontSize: "25px" }}
+                  className="hover:text-teal-700 cursor-pointer mx-2"
+                />
+                <YouTubeIcon
+                  style={{ fontSize: "25px" }}
+                  className="hover:text-teal-700 cursor-pointer ml-2"
+                />
+              </div>
             </div>
-          </div>
-        </div>
+          </div>}
       </div>
 
-      <hr />
-      <div className="flex items-center justify-between text-gray-900 text-[15px]">
-        <p>© 2023 NextGen Software, All rights reserved.</p>
-        <div className="flex space-x-4">
-          <p className="hover:underline cursor-pointer">Privacy Policy</p>
-          <p className="hover:underline cursor-pointer">Terms of Use</p>
-          <p className="hover:underline cursor-pointer">Cookie Policy</p>
-          <p className="hover:underline cursor-pointer">License</p>
-        </div>
+      <div className="flex items-center justify-center tab:justify-between text-gray-900 text-[15px]">
+        <p>© 2023 DailyQuill Software, All rights reserved.</p>
+        {
+          !TABLET_BREAK_POINT &&
+          <div className="flex space-x-4">
+            <p className="hover:underline cursor-pointer">Privacy Policy</p>
+            <p className="hover:underline cursor-pointer">Terms of Use</p>
+            <p className="hover:underline cursor-pointer">Cookie Policy</p>
+            <p className="hover:underline cursor-pointer">License</p>
+          </div>}
       </div>
+
+
     </div>
   );
 }

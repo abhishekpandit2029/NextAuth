@@ -1,12 +1,15 @@
 "use client";
+
 import axios from "axios";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { redirect, useRouter } from "next/navigation";
-
+import { useRouter } from "next/navigation";
+import { useToken } from "@/context/TokenProvider";
 
 export default function ProfilePage() {
+    const { token } = useToken();
+    console.log("token....", token)
     const { replace } = useRouter()
     const [data, setData] = useState("nothing")
     const logout = async () => {
