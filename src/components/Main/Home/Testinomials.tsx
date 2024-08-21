@@ -1,10 +1,8 @@
-import Image from "next/image";
-
 export default function Testinomials() {
     return (
         <section className="relative isolate overflow-hidden bg-white px-6 py-12 lg:px-8">
             <div className="mx-auto max-w-2xl lg:max-w-4xl">
-                <Image alt="" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" className="mx-auto h-12" />
+                <img alt="" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" className="mx-auto h-12" />
                 <figure className="mt-10">
                     <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
                         <p>
@@ -13,7 +11,7 @@ export default function Testinomials() {
                         </p>
                     </blockquote>
                     <figcaption className="mt-10">
-                        <Image
+                        <img
                             alt=""
                             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                             className="mx-auto h-10 w-10 rounded-full"
