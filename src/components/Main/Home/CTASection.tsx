@@ -1,6 +1,8 @@
 import React from "react";
+import Image from "next/image";
+import Creative from "../../../stuff/Creative.svg"
 
-export default function Home() {
+export default function CTASection() {
   return (
     <div className="px-4">
       <div
@@ -15,8 +17,8 @@ export default function Home() {
           }}
         />
       </div>
-      <div className="mx-auto max-w-2xl py-[5rem]">
-        <div className="text-center">
+      <div className="relative isolate overflow-hidden px-6 pt-16 sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+        <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             Today&apos;s Steps, Tomorrow&apos;s Memories: Your Daily Journey Companion.
 
@@ -24,17 +26,26 @@ export default function Home() {
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Capture life&apos;s moments, reflect, and cherish memories. Your personal journaling companion, making every day memorable.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
-              href="#"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+
+            <button
+              className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
               Get started
-            </a>
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+            </button>
+
+            <a href="#" className="text-sm font-semibold leading-6 text-black">
               Learn more <span aria-hidden="true">→</span>
             </a>
           </div>
+        </div>
+        <div className="relative mt-16 h-80 lg:mt-8 hidden lap:flex">
+          <Image
+            alt="Creative"
+            src={Creative}
+
+            className="absolute left-0 top-0 max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+          />
         </div>
       </div>
     </div>

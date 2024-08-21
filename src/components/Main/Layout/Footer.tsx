@@ -38,7 +38,7 @@ function FooterItems() {
           <h2 className="mb-2 text-md font-semibold text-gray-900 uppercase">
             {item.items}
           </h2>
-          <ul className="text-gray-500 leading-7 dark:text-gray-400 font-medium">
+          <ul className="text-gray-500 leading-7 font-medium">
             {item.subitems.map((subitem, index) => (
               <li key={index}>
                 <a href="#" className="hover:underline">
@@ -58,7 +58,7 @@ function Footer() {
   const MOBILE_BREAK_POINT = useMediaQuery("(max-width: 640px)");
   const TABLET_BREAK_POINT = useMediaQuery("(max-width: 1024px)");
   return (
-    <div className="w-full flex flex-col px-4 tab:px-12 py-4 space-y-8">
+    <div className="w-full flex flex-col px-4 tab:px-12 py-12 space-y-8">
       <div className="flex justify-between items-center flex-col tab:flex-row space-y-4 tab:space-y-0">
         <div className="flex flex-col items-center tab:items-start space-y-2 tab:space-y-4">
           <div className="flex items-center ">
@@ -91,7 +91,7 @@ function Footer() {
               <h2 className="mb-2 text-md font-semibold text-gray-900 uppercase">
                 Contact Us
               </h2>
-              <p className="leading-6">
+              <p className="text-gray-500 leading-7 font-medium">
                 (555) 123-4567 support@DailyQuill.com 1234 Social Media Street Suite
                 567 Cityville, Digitaland 54321 United States
               </p>

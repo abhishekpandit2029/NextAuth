@@ -11,7 +11,8 @@ import DailyQuill from "@/stuff/Red_Illustrated_Bull_Stock_Broker_Logo__1_-remov
 function Navbar() {
   return (
     <nav className="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
-      <div className="flex lg:flex-1">
+
+      <div className="flex items-center ">
         <a href="/">
           <Image
             className="w-20"
@@ -19,6 +20,9 @@ function Navbar() {
             alt="logo"
           />
         </a>
+        <span className="self-center text-2xl font-semibold whitespace-nowrap">
+          DailyQuill
+        </span>
       </div>
 
       <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
