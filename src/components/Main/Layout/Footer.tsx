@@ -59,8 +59,8 @@ function Footer() {
   const TABLET_BREAK_POINT = useMediaQuery("(max-width: 1024px)");
   return (
     <div className="w-full flex flex-col px-4 tab:px-12 py-12 space-y-8">
-      <div className="flex justify-between items-center flex-col tab:flex-row space-y-4 tab:space-y-0">
-        <div className="flex flex-col items-center tab:items-start space-y-2 tab:space-y-4">
+      <div className="flex justify-between flex-col tab:flex-row space-y-4 tab:space-y-0">
+        <div className="flex flex-col items-center tab:items-start">
           <div className="flex items-center ">
             <Image src={Logo} className="w-16" alt="Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap">
@@ -71,16 +71,6 @@ function Footer() {
             with new challenges, featured solutions, selected articles and our
             latest news
           </p>
-          <div className="flex space-x-4">
-            <input
-              placeholder="example@gmail.com"
-              type="text"
-              className="border-2 h-10 text-sm outline-none p-4 rounded-lg"
-            />
-            <button className="rounded-lg border-2 p-2 text-sm">
-              Subscribe
-            </button>
-          </div>
         </div>
 
         {

@@ -1,21 +1,15 @@
 export default function Testinomials() {
     return (
-        <section className="relative isolate overflow-hidden bg-white px-6 py-12 lg:px-8">
+        <section className="relative isolate overflow-hidden bg-white px-6 py-12 lg:px-8" id="Endorsements">
             <div className="mx-auto max-w-2xl lg:max-w-4xl">
                 <img alt="" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" className="mx-auto h-12" />
                 <figure className="mt-10">
                     <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
                         <p>
-                            “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
-                            molestiae. Numquam corrupti in laborum sed rerum et corporis.”
+                            “Our platform has transformed daily journaling into a secure, effortless experience. We're proud to provide a space where users can capture their thoughts with ease and confidence. Seeing our platform become a trusted part of people's lives is truly fulfilling.”
                         </p>
                     </blockquote>
-                    <figcaption className="mt-10">
-                        <img
-                            alt=""
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            className="mx-auto h-10 w-10 rounded-full"
-                        />
+                    <figcaption className="mt-6">
                         <div className="mt-4 flex items-center justify-center space-x-3 text-base">
                             <div className="font-semibold text-gray-900">Abhishek Pandit</div>
                             <svg width={3} height={3} viewBox="0 0 2 2" aria-hidden="true" className="fill-gray-900">

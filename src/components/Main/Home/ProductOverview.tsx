@@ -1,44 +1,44 @@
-import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon, CubeTransparentIcon } from '@heroicons/react/24/outline'
+
 
 const features = [
     {
-        name: 'Push to deploy',
+        name: 'Instant Publishing',
         description:
-            'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+            'Your diary, your privacy. We provide SSL certificates to ensure that your entries remain secure and accessible only to you. Write freely, knowing your content is protected.',
         icon: CloudArrowUpIcon,
     },
     {
-        name: 'SSL certificates',
+        name: 'Secure and Private',
         description:
-            'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
+            'Your diary, your privacy. We provide SSL certificates to ensure that your entries remain secure and accessible only to you. Write freely, knowing your content is protected.',
         icon: LockClosedIcon,
     },
     {
-        name: 'Simple queues',
+        name: 'Streamlined Entry Management',
         description:
-            'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+            'Organize your thoughts effortlessly. Our simple queue system helps you manage and schedule your entries, so you never miss a day of journaling.',
         icon: ArrowPathIcon,
     },
     {
-        name: 'Advanced security',
+        name: 'User-Friendly Interface',
         description:
-            'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
-        icon: FingerPrintIcon,
+            'Designed for ease of use, our platform is intuitive and user-friendly. No steep learning curves—just a smooth, enjoyable writing experience.',
+        icon: CubeTransparentIcon,
     },
 ]
 
 export default function ProductOverview() {
     return (
-        <div className="bg-white py-12">
+        <div className="bg-white py-12" id='ProductOverview'>
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:text-center">
-                    <h2 className="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+                    <h2 className="text-base font-semibold leading-7 text-indigo-600">Effortless Daily Journaling</h2>
                     <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Everything you need to deploy your app
+                        Seamlessly Document and Share Your Daily Life with Essential Tools.
                     </p>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
-                        Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-                        pulvinar et feugiat blandit at. In mi viverra elit nunc.
+                        Capture your thoughts, experiences, and ideas seamlessly. Our platform provides all the tools you need to maintain your daily diary or personal blog with just a few clicks.
                     </p>
                 </div>
                 <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
