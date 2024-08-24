@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function RegisterForm() {
   const { replace } = useRouter();
@@ -44,7 +45,7 @@ export default function RegisterForm() {
   }, [user]);
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 w-full tab:w-[25rem]">
       <div className="flex items-center space-x-6 bg-gray-100 py-3 px-6 rounded-md">
         <div>
           <PersonIcon />
@@ -99,10 +100,21 @@ export default function RegisterForm() {
           />
         </div>
       </div> */}
-      <div>
-        <button onClick={onSignup} className="rounded-lg border-2 py-2 px-3 text-sm">
-          Signup
-        </button>
+
+
+
+      <div className="flex space-x-4">
+        <div>
+          <button onClick={onSignup} className="rounded-lg border-2 py-2 px-3 text-sm">
+            Signup
+          </button>
+        </div>
+        <div>
+          <Link href="/login">
+            <button className="rounded-lg border-2 py-2 px-3 text-sm">
+              Login            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

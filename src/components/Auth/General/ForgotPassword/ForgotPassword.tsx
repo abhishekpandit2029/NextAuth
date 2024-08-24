@@ -8,7 +8,7 @@ import ForgotPasswordForm from "../../Form/ForgotPasswordForm";
 
 export default function ForgotPassword() {
   return (
-    <div className="flex flex-col space-y-5 w-[25rem]">
+    <div className="flex flex-col space-y-4 w-screen tab:w-[25rem] px-6 tab:p-0">
       <div>
         <p className="text-[2.5rem]">Reset Password :)</p>
       </div>

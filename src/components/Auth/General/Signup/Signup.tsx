@@ -5,7 +5,7 @@ import SignupForm from "../../Form/SignupForm";
 
 export default function Signup() {
   return (
-    <div className="flex flex-col space-y-5 w-[25rem]">
+    <div className="flex flex-col space-y-5 w-screen tab:w-[25rem] px-6 tab:p-0">
       <div>
         <p className="text-[2.5rem]">Register newbie :)</p>
       </div>

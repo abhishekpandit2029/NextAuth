@@ -4,8 +4,8 @@ export default function Testinomials() {
     return (
         <section className="relative isolate overflow-hidden bg-white px-6 py-12 lg:px-8" id="Endorsements">
             <div className="mx-auto max-w-2xl lg:max-w-4xl">
-                <Image alt="workation" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" className="mx-auto h-12" />
-                <figure className="mt-10">
+                <Image alt="workation" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" className="mx-auto" width="200" height="20" />
+                <figure className="mt-6">
                     <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
                         <p>
                             “Our platform has transformed daily journaling into a secure, effortless experience. We&apos;re proud to provide a space where users can capture their thoughts with ease and confidence. Seeing our platform become a trusted part of people&apos;s lives is truly fulfilling.”

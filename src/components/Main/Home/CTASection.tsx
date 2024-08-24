@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Creative from "../../../stuff/Creative.svg"
+import SignupModal from "@/components/Modals/SignupModal";
+import Link from "next/link";
 
 export default function CTASection() {
   return (
@@ -27,16 +29,11 @@ export default function CTASection() {
             Capture life&apos;s moments, reflect, and cherish memories. Your personal journaling companion, making every day memorable.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-
-            <button
-              className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            >
-              Get started
-            </button>
-
-            <a href="#" className="text-sm font-semibold leading-6 text-black">
-              Learn more <span aria-hidden="true">→</span>
-            </a>
+            <SignupModal />
+            <Link href="#ProductOverview" passHref>
+              <p className="text-sm font-semibold leading-6 text-black">
+                Learn more <span aria-hidden="true">→</span>
+              </p></Link>
           </div>
         </div>
         <div className="relative mt-16 h-80 lg:mt-8 hidden lap:flex">

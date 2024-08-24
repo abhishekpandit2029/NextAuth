@@ -41,8 +41,14 @@ export default function LoginForm() {
     }
   }, [user]);
   return (
-    <div className="flex flex-col space-y-5 w-[25rem]">
+    <div className="flex flex-col space-y-4 w-full tab:w-[25rem]">
       <div className="flex flex-col space-y-4">
+        <div>
+          <p className="text-sm">
+            To keep connected with us please login with your personal information
+            by email address and password.
+          </p>
+        </div>
         <div className="flex items-center space-x-6 bg-gray-100 py-3 px-6 rounded-md">
           <div>
             <MailOutlineRoundedIcon />

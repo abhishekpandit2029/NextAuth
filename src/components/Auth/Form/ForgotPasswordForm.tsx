@@ -7,7 +7,7 @@ import LockResetIcon from "@mui/icons-material/LockReset";
 
 export default function ForgotPasswordForm() {
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 w-full tab:w-[25rem]">
       <div className="flex items-center space-x-6 bg-gray-100 py-3 px-6 rounded-md">
         <div>
           <MailOutlineRoundedIcon />

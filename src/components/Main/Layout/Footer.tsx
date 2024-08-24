@@ -58,7 +58,7 @@ function Footer() {
   const MOBILE_BREAK_POINT = useMediaQuery("(max-width: 640px)");
   const TABLET_BREAK_POINT = useMediaQuery("(max-width: 1024px)");
   return (
-    <div className="w-full flex flex-col px-4 tab:px-12 py-12 space-y-8">
+    <div className="w-full flex flex-col px-4 tab:px-12 py-4 tab:py-12 space-y-2 tab:space-y-8">
       <div className="flex justify-between flex-col tab:flex-row space-y-4 tab:space-y-0">
         <div className="flex flex-col items-center tab:items-start">
           <div className="flex items-center ">
@@ -112,7 +112,7 @@ function Footer() {
       </div>
 
       <div className="flex items-center justify-center tab:justify-between text-gray-900 text-[15px]">
-        <p>© 2023 DailyQuill Software, All rights reserved.</p>
+        <p className="text-center">© 2023 DailyQuill Software, All rights reserved.</p>
         {
           !TABLET_BREAK_POINT &&
           <div className="flex space-x-4">
