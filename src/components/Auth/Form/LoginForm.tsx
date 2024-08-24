@@ -13,10 +13,9 @@ export default function LoginForm() {
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-  })
+  });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-
 
   const onLogin = async () => {
     try {
@@ -31,7 +30,7 @@ export default function LoginForm() {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
@@ -45,8 +44,8 @@ export default function LoginForm() {
       <div className="flex flex-col space-y-4">
         <div>
           <p className="text-sm">
-            To keep connected with us please login with your personal information
-            by email address and password.
+            To keep connected with us please login with your personal
+            information by email address and password.
           </p>
         </div>
         <div className="flex items-center space-x-6 bg-gray-100 py-3 px-6 rounded-md">
@@ -92,7 +91,10 @@ export default function LoginForm() {
       </div>
       <div className="flex space-x-4">
         <div>
-          <button onClick={onLogin} className="rounded-lg border-2 py-2 px-3 text-sm">
+          <button
+            onClick={onLogin}
+            className="rounded-lg border-2 py-2 px-3 text-sm"
+          >
             Login Now
           </button>
         </div>

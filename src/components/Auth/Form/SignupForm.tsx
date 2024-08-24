@@ -16,7 +16,7 @@ export default function RegisterForm() {
     email: "",
     password: "",
     username: "",
-  })
+  });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
@@ -26,7 +26,6 @@ export default function RegisterForm() {
       const response = await axios.post("/api/users/signup", user);
       console.log("Signup success", response.data);
       replace("/login");
-
     } catch (error: any) {
       console.log("Signup failed", error.message);
 
@@ -34,10 +33,14 @@ export default function RegisterForm() {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    if (user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {
+    if (
+      user.email.length > 0 &&
+      user.password.length > 0 &&
+      user.username.length > 0
+    ) {
       setButtonDisabled(true);
     } else {
       setButtonDisabled(false);
@@ -101,18 +104,20 @@ export default function RegisterForm() {
         </div>
       </div> */}
 
-
-
       <div className="flex space-x-4">
         <div>
-          <button onClick={onSignup} className="rounded-lg border-2 py-2 px-3 text-sm">
+          <button
+            onClick={onSignup}
+            className="rounded-lg border-2 py-2 px-3 text-sm"
+          >
             Signup
           </button>
         </div>
         <div>
           <Link href="/login">
             <button className="rounded-lg border-2 py-2 px-3 text-sm">
-              Login            </button>
+              Login{" "}
+            </button>
           </Link>
         </div>
       </div>

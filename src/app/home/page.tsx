@@ -5,13 +5,13 @@ import ProductOverview from "@/components/Main/Home/ProductOverview";
 import Testinomials from "@/components/Main/Home/Testinomials";
 
 export default function Home() {
-    return (
-        <div>
-            <CTASection />
-            <ProductOverview />
-            <Testinomials />
-            <PriceSection />
-            <NewsLetter />
-        </div>
-    );
+  return (
+    <div>
+      <CTASection />
+      <ProductOverview />
+      <Testinomials />
+      <PriceSection />
+      <NewsLetter />
+    </div>
+  );
 }

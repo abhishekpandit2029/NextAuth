@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "@/app/globals.css"
+import "@/app/globals.css";
 import { Poppins } from "next/font/google";
 import Dashboardlayout from "@/components/Main/Layout/Dashboardlayout";
 import { TokenProvider } from "@/context/TokenProvider";
@@ -24,9 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={oppins.className}>
         <TokenProvider>
-          <Dashboardlayout>
-            {children}
-          </Dashboardlayout></TokenProvider>
-      </body></html>
+          <Dashboardlayout>{children}</Dashboardlayout>
+        </TokenProvider>
+      </body>
+    </html>
   );
 }

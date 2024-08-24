@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -53,7 +53,6 @@ function FooterItems() {
   );
 }
 
-
 function Footer() {
   const MOBILE_BREAK_POINT = useMediaQuery("(max-width: 640px)");
   const TABLET_BREAK_POINT = useMediaQuery("(max-width: 1024px)");
@@ -73,8 +72,7 @@ function Footer() {
           </p>
         </div>
 
-        {
-          !MOBILE_BREAK_POINT &&
+        {!MOBILE_BREAK_POINT && (
           <div className="flex space-x-12 text-[15px]">
             {!TABLET_BREAK_POINT && <FooterItems />}
             <div className="w-[15rem] flex flex-col">
@@ -82,8 +80,8 @@ function Footer() {
                 Contact Us
               </h2>
               <p className="text-gray-500 leading-7 font-medium">
-                (555) 123-4567 support@DailyQuill.com 1234 Social Media Street Suite
-                567 Cityville, Digitaland 54321 United States
+                (555) 123-4567 support@DailyQuill.com 1234 Social Media Street
+                Suite 567 Cityville, Digitaland 54321 United States
               </p>
               <div className="flex mt-4">
                 <FacebookIcon
@@ -108,22 +106,23 @@ function Footer() {
                 />
               </div>
             </div>
-          </div>}
+          </div>
+        )}
       </div>
 
       <div className="flex items-center justify-center tab:justify-between text-gray-900 text-[15px]">
-        <p className="text-center">© 2023 DailyQuill Software, All rights reserved.</p>
-        {
-          !TABLET_BREAK_POINT &&
+        <p className="text-center">
+          © 2023 DailyQuill Software, All rights reserved.
+        </p>
+        {!TABLET_BREAK_POINT && (
           <div className="flex space-x-4">
             <p className="hover:underline cursor-pointer">Privacy Policy</p>
             <p className="hover:underline cursor-pointer">Terms of Use</p>
             <p className="hover:underline cursor-pointer">Cookie Policy</p>
             <p className="hover:underline cursor-pointer">License</p>
-          </div>}
+          </div>
+        )}
       </div>
-
-
     </div>
   );
 }
