@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Testinomials() {
   return (
     <section
-      className="relative isolate overflow-hidden bg-white px-6 py-12 lg:px-8"
+      className="relative isolate overflow-hidden bg-white px-6 py-0 tab:py-12 lg:px-8"
       id="Endorsements"
     >
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
@@ -25,7 +25,7 @@ export default function Testinomials() {
             </p>
           </blockquote>
           <figcaption className="mt-6">
-            <div className="mt-4 flex items-center justify-center space-x-3 text-base">
+            <div className="mt-4 flex flex-col tab:flex-row space-y-2 tab:space-y-0 items-center justify-center space-x-3 text-base">
               <div className="font-semibold text-gray-900">Abhishek Pandit</div>
               <svg
                 width={3}

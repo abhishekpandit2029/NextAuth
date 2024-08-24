@@ -19,7 +19,7 @@ export default function CTASection() {
           }}
         />
       </div>
-      <div className="relative isolate overflow-hidden px-6 pt-16 sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+      <div className="relative isolate overflow-hidden px-2 pt-6 sm:px-16 tab:pt-12 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
         <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             Today&apos;s Steps, Tomorrow&apos;s Memories: Your Daily Journey
