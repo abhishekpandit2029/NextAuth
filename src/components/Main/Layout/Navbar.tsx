@@ -13,7 +13,7 @@ function Navbar() {
   const isHome = useSelectedLayoutSegment()?.includes("home");
   return (
     <nav
-      className="flex items-center justify-between pt-4 px-2 lg:px-8"
+      className="flex items-center justify-between py-4 px-2 lg:px-8"
       aria-label="Global"
     >
       <div className="flex items-center ">
