@@ -20,7 +20,7 @@ export default function CTASection() {
         />
       </div>
       <div className="flex tab:px-8 tab:pb-4 lap:px-16 lap:pb-8 items-center justify-evenly">
-        <div className="flex flex-col space-y-4 w-screen tab:w-[35rem] px-6 tab:p-0">
+        <div className="flex flex-col space-y-4 w-screen tab:w-[40rem] px-6 tab:p-0">
           <h1 className="font-bold tracking-tight text-gray-900 text-4xl lap:text-6xl text-center mob:text-left">
             Today&apos;s Steps, Tomorrow&apos;s Memories: Your Daily Journey
             Companion.

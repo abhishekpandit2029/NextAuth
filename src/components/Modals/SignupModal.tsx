@@ -29,10 +29,11 @@ export default function SignupModal() {
         Get started
       </Button>
       <Modal footer={null} open={isModalOpen} onCancel={handleCancel}>
+        <div>
+          <p className="text-[2.5rem]">Welcome</p>
+          <p className="text-[2.5rem]">Scribe :)</p>
+        </div>
         <div className="flex flex-col space-y-4 justify-center items-center">
-          <div>
-            <p className="text-[2.5rem]">Welcome Scribe :)</p>
-          </div>
           <LoginForm />
           <hr className="w-[50%] self-center" />
           <div className="flex flex-col justify-between items-center space-y-2">

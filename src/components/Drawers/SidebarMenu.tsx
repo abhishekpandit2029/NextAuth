@@ -11,17 +11,13 @@ export default function SidebarMenu() {
   const [open, setOpen] = useState(false);
   const isHome = useSelectedLayoutSegment()?.includes("home");
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
   const onClose = () => {
     setOpen(false);
   };
 
   return (
     <>
-      <MenuOpenIcon className="flex lg:hidden text-3xl mob:text-4xl mr-2" onClick={showDrawer} />
+      <MenuOpenIcon className="flex lg:hidden text-3xl mob:text-4xl mr-2" onClick={() => setOpen(true)} />
       <Drawer
         title={
           <div className="flex items-center ">
@@ -39,27 +35,27 @@ export default function SidebarMenu() {
         width={300}
       >
         <div className="flex flex-col space-y-4">
-          <Link href={isHome ? "#ProductOverview" : "/home"} passHref>
+          <Link href={isHome ? "#ProductOverview" : "/home"} passHref onClick={onClose}>
             <p className="text-xl font-semibold leading-6 text-gray-900">
               Features
             </p>
           </Link>
-          <Link href={isHome ? "#Endorsements" : "/home"} passHref>
+          <Link href={isHome ? "#Endorsements" : "/home"} passHref onClick={onClose}>
             <p className="text-xl font-semibold leading-6 text-gray-900">
               Endorsements
             </p>
           </Link>
-          <Link href={isHome ? "#Pricing" : "/home"} passHref>
+          <Link href={isHome ? "#Pricing" : "/home"} passHref onClick={onClose}>
             <p className="text-xl font-semibold leading-6 text-gray-900">
               Pricing
             </p>
           </Link>
-          <Link href={isHome ? "#Subscribe" : "/home"} passHref>
+          <Link href={isHome ? "#Subscribe" : "/home"} passHref onClick={onClose}>
             <p className="text-xl font-semibold leading-6 text-gray-900">
               Subscribe
             </p>
           </Link>
-          <Link href="/login">
+          <Link href="/login" passHref onClick={onClose}>
             <p className="text-xl font-semibold leading-6 text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
             </p>
