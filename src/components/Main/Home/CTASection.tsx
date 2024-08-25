@@ -19,13 +19,13 @@ export default function CTASection() {
           }}
         />
       </div>
-      <div className="relative isolate overflow-hidden px-2 pt-6 sm:px-16 tab:pt-12 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
-        <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+      <div className="flex tab:px-8 tab:pb-4 lap:px-16 lap:pb-8 items-center justify-evenly">
+        <div className="flex flex-col space-y-4 w-screen tab:w-[25rem] px-6 tab:p-0">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 tab:text-4xl lap:text-5xl">
             Today&apos;s Steps, Tomorrow&apos;s Memories: Your Daily Journey
             Companion.
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-base tab:text-lg leading-6 tab:leading-8 text-gray-600">
             Capture life&apos;s moments, reflect, and cherish memories. Your
             personal journaling companion, making every day memorable.
           </p>
@@ -38,11 +38,11 @@ export default function CTASection() {
             </Link>
           </div>
         </div>
-        <div className="relative mt-16 h-80 lg:mt-8 hidden lap:flex">
+        <div className="hidden tab:flex">
           <Image
             alt="Creative"
             src={Creative}
-            className="absolute left-0 top-0 max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+            className="min-w-full"
           />
         </div>
       </div>

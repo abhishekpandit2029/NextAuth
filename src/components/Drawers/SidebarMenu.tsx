@@ -21,7 +21,7 @@ export default function SidebarMenu() {
 
   return (
     <>
-      <MenuOpenIcon className="flex lg:hidden text-4xl" onClick={showDrawer} />
+      <MenuOpenIcon className="flex lg:hidden text-3xl mob:text-4xl" onClick={showDrawer} />
       <Drawer
         title={
           <div className="flex items-center ">

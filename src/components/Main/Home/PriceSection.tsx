@@ -9,7 +9,7 @@ const includedFeatures = [
 
 export default function PriceSection() {
   return (
-    <div className="bg-white py-0 tab:py-12" id="Pricing">
+    <div className="bg-white pb-0 pt-12 tab:py-12" id="Pricing">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -22,8 +22,8 @@ export default function PriceSection() {
             payment structure with all costs upfront.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-          <div className="p-8 sm:p-10 lg:flex-auto">
+        <div className="mx-auto mt-6 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+          <div className="p-4 sm:p-10 lg:flex-auto">
             <h3 className="text-2xl font-bold tracking-tight text-gray-900">
               Lifetime membership
             </h3>
@@ -62,7 +62,7 @@ export default function PriceSection() {
                 </p>
                 <p className="mt-6 flex items-baseline justify-center gap-x-2">
                   <span className="text-5xl font-bold tracking-tight text-gray-900">
-                    $0
+                    $10
                   </span>
                   <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
                     USD

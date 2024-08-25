@@ -8,9 +8,9 @@ interface ILayoutProps {
 
 function Dashboardlayout({ children }: ILayoutProps) {
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div>{children}</div>
+      <div className="flex-grow">{children}</div>
       <Footer />
     </div>
   );
