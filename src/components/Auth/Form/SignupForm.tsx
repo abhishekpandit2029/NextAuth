@@ -6,46 +6,31 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import PersonIcon from "@mui/icons-material/Person";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
 import Link from "next/link";
+import { message } from "antd";
+
+interface ISignupResponse {
+  message: string
+  error?: string
+}
 
 export default function RegisterForm() {
-  const { replace } = useRouter();
+  const { push } = useRouter();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
     username: "",
   });
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
 
   const onSignup = async () => {
     try {
-      setLoading(true);
-      const response = await axios.post("/api/users/signup", user);
-      console.log("Signup success", response.data);
-      replace("/login");
+      const response = await axios.post<ISignupResponse>("/api/users/signup", user);
+      message.success(response.data.message);
+      push("/login");
     } catch (error: any) {
-      console.log("Signup failed", error.message);
-
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
+      message.error(error.response.data.error);
     }
   };
-
-  useEffect(() => {
-    if (
-      user.email.length > 0 &&
-      user.password.length > 0 &&
-      user.username.length > 0
-    ) {
-      setButtonDisabled(true);
-    } else {
-      setButtonDisabled(false);
-    }
-  }, [user]);
 
   return (
     <div className="flex flex-col space-y-4 w-full tab:w-[25rem]">
@@ -91,19 +76,6 @@ export default function RegisterForm() {
           />
         </div>
       </div>
-      {/* <div className="flex items-center space-x-6 bg-gray-100 py-3 px-6 rounded-md">
-        <div>
-          <LockResetIcon />
-        </div>
-        <div className="flex flex-col w-full">
-          <input
-            placeholder="••••••••••••"
-            type="password"
-            className="border-2 h-8 w-full text-sm bg-gray-100 outline-none border-none tracking-widest"
-          />
-        </div>
-      </div> */}
-
       <div className="flex space-x-4">
         <div>
           <button

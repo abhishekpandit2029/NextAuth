@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Creative from "../../../stuff/Creative.svg";
 import SignupModal from "@/components/Modals/SignupModal";
-import Link from "next/link";
+import LearnMoreModel from "@/components/Modals/LearnMoreModel";
 
 export default function CTASection() {
   return (
@@ -31,11 +31,7 @@ export default function CTASection() {
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
             <SignupModal />
-            <Link href="#ProductOverview" passHref>
-              <p className="text-sm font-semibold leading-6 text-black">
-                Learn more <span aria-hidden="true">→</span>
-              </p>
-            </Link>
+            <LearnMoreModel />
           </div>
         </div>
         <div className="hidden tab:flex">

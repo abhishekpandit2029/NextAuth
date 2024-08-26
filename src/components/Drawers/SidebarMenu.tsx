@@ -1,30 +1,71 @@
 import React, { useState } from "react";
-import { Drawer } from "antd";
+import { Drawer, MenuProps, message } from "antd";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import DailyQuill from "@/stuff/Red_Illustrated_Bull_Stock_Broker_Logo__1_-removebg-preview.png";
+import axios from "axios";
+import { useGetUserDetails } from "../Main/Layout/Navbar";
+import { Button } from "@mui/base/Button";
+import { isAuthenticate } from "@/constants/strings";
 
 export default function SidebarMenu() {
+  const { push } = useRouter();
   const [open, setOpen] = useState(false);
   const isHome = useSelectedLayoutSegment()?.includes("home");
+  const { data } = useGetUserDetails()
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
 
   const onClose = () => {
     setOpen(false);
   };
 
+  function handleLogout() {
+    logout()
+    onClose()
+  }
+
+  const logout = async () => {
+    try {
+      await axios.get("/api/users/logout");
+      localStorage.setItem("isAuthenticate", "false");
+      message.success("Logout successful");
+      push("/login");
+    } catch (error: any) {
+      message.error(error.message);
+    }
+  };
+
+  const items: MenuProps['items'] = [
+    {
+      label: <a href="/profile" className="text-base font-semibold leading-6 text-gray-900">Profile</a>,
+      key: '0',
+    },
+    {
+      label: <a onClick={() => logout()} className="text-base font-semibold leading-6 text-gray-900">Logout</a>,
+      key: '1',
+    },
+  ];
+
   return (
     <>
-      <MenuOpenIcon className="flex lg:hidden text-3xl mob:text-4xl mr-2" onClick={() => setOpen(true)} />
+      <MenuOpenIcon className="text-3xl mob:text-4xl mr-2" onClick={showDrawer} />
       <Drawer
         title={
           <div className="flex items-center ">
             <a href="/" className="flex space-x-1">
-              <Image className="w-20" src={DailyQuill} alt="logo" />
+              <Image className="w-16" src={DailyQuill} alt="logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap">
-                DailyQuill
+                {(data?.data?.username ?
+                  (data.data.username.charAt(0).toUpperCase() + data.data.username.slice(1).toLowerCase() + "'s")
+                  : "User")}{" "}
+                <span className="self-center text-2xl font-semibold whitespace-nowrap">
+                  DailyQuill
+                </span>
               </span>
             </a>
           </div>
@@ -32,35 +73,52 @@ export default function SidebarMenu() {
         onClose={onClose}
         open={open}
         placement="left"
-        width={300}
+        width="auto"
       >
         <div className="flex flex-col space-y-4">
-          <Link href={isHome ? "#ProductOverview" : "/home"} passHref onClick={onClose}>
-            <p className="text-xl font-semibold leading-6 text-gray-900">
+          {isAuthenticate &&
+            <Link onClick={onClose} href="/profile">
+              <p className="text-base font-semibold leading-6 text-gray-900">
+                Profile
+              </p>
+            </Link>
+          }
+          <Link onClick={onClose} href={isHome ? "#ProductOverview" : "/home#ProductOverview"} passHref>
+            <p className="text-base font-semibold leading-6 text-gray-900">
               Features
             </p>
           </Link>
-          <Link href={isHome ? "#Endorsements" : "/home"} passHref onClick={onClose}>
-            <p className="text-xl font-semibold leading-6 text-gray-900">
+          <Link onClick={onClose} href={isHome ? "#Endorsements" : "/home#Endorsements"} passHref>
+            <p className="text-base font-semibold leading-6 text-gray-900">
               Endorsements
             </p>
           </Link>
-          <Link href={isHome ? "#Pricing" : "/home"} passHref onClick={onClose}>
-            <p className="text-xl font-semibold leading-6 text-gray-900">
+          <Link onClick={onClose} href={isHome ? "#Pricing" : "/home#Pricing"} passHref>
+            <p className="text-base font-semibold leading-6 text-gray-900">
               Pricing
             </p>
           </Link>
-          <Link href={isHome ? "#Subscribe" : "/home"} passHref onClick={onClose}>
-            <p className="text-xl font-semibold leading-6 text-gray-900">
+          <Link onClick={onClose} href={isHome ? "#Subscribe" : "/home#Subscribe"} passHref>
+            <p className="text-base font-semibold leading-6 text-gray-900">
               Subscribe
             </p>
           </Link>
-          <Link href="/login" passHref onClick={onClose}>
-            <p className="text-xl font-semibold leading-6 text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </p>
-          </Link>
-          <AccountBoxIcon style={{ fontSize: "30px" }} />
+          {isAuthenticate ||
+            <Link onClick={onClose} href="/login">
+              <Button
+                className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-base font-semibold text-white w-24"
+              >
+                Login
+              </Button>
+            </Link>
+          }
+          {isAuthenticate &&
+            <Button onClick={handleLogout}
+              className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-base font-semibold text-white w-24"
+            >
+              Logout
+            </Button>
+          }
         </div>
       </Drawer>
     </>

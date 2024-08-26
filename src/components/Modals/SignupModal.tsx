@@ -8,12 +8,16 @@ import google from "@/stuff/google.svg";
 import facebook from "@/stuff/facebook.svg";
 import twitter from "@/stuff/twitter.svg";
 import Image from "next/image";
+import { isAuthenticate } from "@/constants/strings";
+import { useRouter } from "next/navigation";
 
 export default function SignupModal() {
+  const { push } = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
-    setIsModalOpen(true);
+    isAuthenticate ? push("/profile") :
+      setIsModalOpen(true);
   };
 
   const handleCancel = () => {
@@ -29,10 +33,6 @@ export default function SignupModal() {
         Get started
       </Button>
       <Modal footer={null} open={isModalOpen} onCancel={handleCancel}>
-        <div>
-          <p className="text-[2.5rem]">Welcome</p>
-          <p className="text-[2.5rem]">Scribe :)</p>
-        </div>
         <div className="flex flex-col space-y-4 justify-center items-center">
           <LoginForm />
           <hr className="w-[50%] self-center" />

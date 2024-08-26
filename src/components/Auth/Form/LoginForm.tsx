@@ -3,44 +3,40 @@
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { message } from "antd"
+
+interface ILoginResponse {
+  message: string
+  error?: string
+}
 
 export default function LoginForm() {
-  const { replace } = useRouter();
+  const { push } = useRouter();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
   });
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
 
   const onLogin = async () => {
     try {
-      setLoading(true);
-      const response = await axios.post("/api/users/login", user);
-      console.log("Login success", response.data);
-      toast.success("Login success");
-      replace("/profile");
+      const response = await axios.post<ILoginResponse>("/api/users/login", user);
+      localStorage.setItem("isAuth", "true");
+      message.success(response.data.message);
+      push("/profile");
     } catch (error: any) {
-      console.log("Login failed", error.message);
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
+      message.error(error.response.data.error);
     }
   };
 
-  useEffect(() => {
-    if (user.email.length > 0 && user.password.length > 0) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [user]);
   return (
     <div className="flex flex-col space-y-4 w-full tab:w-[25rem]">
+      <div>
+        <p className="text-[2.5rem]">Welcome</p>
+        <p className="text-[2.5rem]">Scribe :)</p>
+      </div>
       <div className="flex flex-col space-y-4">
         <div>
           <p className="text-sm">

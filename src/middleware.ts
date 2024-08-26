@@ -1,13 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { TokenContext, useToken } from "./context/TokenProvider";
-import { useContext, useEffect } from "react";
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   const isPublicPath =
-    path === "/login" || path === "/signup" || path === "/home";
+    path === "/login" || path === "/signup" || path === "/home" || path === "/forgot-password";
 
   const token = request.cookies.get("token")?.value || "";
 
@@ -26,5 +24,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/profile", "/login", "/signup", "/verifyemail"],
+  matcher: ["/", "/profile", "/login", "/signup"],
 };
