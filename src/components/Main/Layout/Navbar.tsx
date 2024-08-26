@@ -37,6 +37,7 @@ export function useGetUserDetails() {
     if (isAuthenticate) {
       fetchUserDetails();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticate]);
 
   return { data };
