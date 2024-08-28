@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Drawer, MenuProps, message } from "antd";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
@@ -6,15 +6,29 @@ import Link from "next/link";
 import Image from "next/image";
 import DailyQuill from "@/stuff/Red_Illustrated_Bull_Stock_Broker_Logo__1_-removebg-preview.png";
 import axios from "axios";
-import { useGetUserDetails } from "../Main/Layout/Navbar";
 import { Button } from "@mui/base/Button";
-import { isAuthenticate } from "@/constants/strings";
+import { IMeResponse } from "../Main/Layout/Navbar";
 
 export default function SidebarMenu() {
   const { push } = useRouter();
   const [open, setOpen] = useState(false);
   const isHome = useSelectedLayoutSegment()?.includes("home");
-  const { data } = useGetUserDetails()
+  const [data, setData] = useState<IMeResponse | null>(null);
+  const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
+
+  const fetchUserData = async () => {
+    try {
+      const res = await axios.get<IMeResponse>("/api/users/me");
+      setData(res.data);
+    } catch {
+      return null
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticate]);
 
   const showDrawer = () => {
     setOpen(true);

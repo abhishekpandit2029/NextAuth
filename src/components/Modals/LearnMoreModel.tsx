@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { Modal } from "antd";
-import { isAuthenticate } from "@/constants/strings";
 import { useRouter } from "next/navigation";
 
 export default function LearnMoreModel() {
     const { push } = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
 
     const showModal = () => {
         setIsModalOpen(true);

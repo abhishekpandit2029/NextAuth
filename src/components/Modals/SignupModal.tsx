@@ -8,12 +8,12 @@ import google from "@/stuff/google.svg";
 import facebook from "@/stuff/facebook.svg";
 import twitter from "@/stuff/twitter.svg";
 import Image from "next/image";
-import { isAuthenticate } from "@/constants/strings";
 import { useRouter } from "next/navigation";
 
 export default function SignupModal() {
   const { push } = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
 
   const showModal = () => {
     isAuthenticate ? push("/profile") :

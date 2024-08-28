@@ -13,40 +13,32 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import type { MenuProps } from 'antd';
 import { message } from "antd"
 import { Button } from "@mui/base/Button";
-import { isAuthenticate } from "@/constants/strings";
 
-interface IMeResponse {
+export interface IMeResponse {
   data: {
     username: string
   }
 }
 
-export function useGetUserDetails() {
-  const [data, setData] = useState<IMeResponse | null>(null);
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const res = await axios.get<IMeResponse>("/api/users/me");
-        setData(res.data);
-      } catch (error: any) {
-        message.error("Error fetching user details");
-      }
-    };
-
-    if (isAuthenticate) {
-      fetchUserDetails();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticate]);
-
-  return { data };
-}
-
 function Navbar() {
   const { push } = useRouter();
-  const { data } = useGetUserDetails()
   const isHome = useSelectedLayoutSegment()?.includes("home");
+  const [meData, setMeData] = useState<IMeResponse | null>(null);
+  const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
+
+  const fetchUserData = async () => {
+    try {
+      const res = await axios.get<IMeResponse>("/api/users/me");
+      setMeData(res.data);
+    } catch {
+      return null
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticate]);
 
   const items: MenuProps['items'] = [
     {
@@ -121,8 +113,8 @@ function Navbar() {
         {isAuthenticate && <div className="flex space-x-2 items-center">
           <AccountCircleIcon style={{ fontSize: "35px" }} />
           <p className="text-base normal-case font-semibold leading-6 text-gray-900">
-            {(data?.data?.username ?
-              data.data.username.charAt(0).toUpperCase() + data.data.username.slice(1).toLowerCase()
+            {(meData?.data?.username ?
+              meData.data.username.charAt(0).toUpperCase() + meData.data.username.slice(1).toLowerCase()
               : "User")}
           </p>
           <Dropdown menu={{ items }}>
