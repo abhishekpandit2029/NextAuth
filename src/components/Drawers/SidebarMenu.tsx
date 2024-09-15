@@ -14,7 +14,7 @@ export default function SidebarMenu() {
   const [open, setOpen] = useState(false);
   const isHome = useSelectedLayoutSegment()?.includes("home");
   const [data, setData] = useState<IMeResponse | null>(null);
-  const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
+  const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
   const fetchUserData = async () => {
     try {

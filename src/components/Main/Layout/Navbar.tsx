@@ -24,7 +24,7 @@ function Navbar() {
   const { push } = useRouter();
   const isHome = useSelectedLayoutSegment()?.includes("home");
   const [meData, setMeData] = useState<IMeResponse | null>(null);
-  const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
+  const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
   const fetchUserData = async () => {
     try {
