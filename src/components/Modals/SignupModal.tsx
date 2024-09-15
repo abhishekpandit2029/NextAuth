@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 export default function SignupModal() {
   const { push } = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isAuthenticate = typeof window !== 'undefined' ? JSON.parse(localStorage?.getItem("isAuth") || "") : null
+  const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
   const showModal = () => {
     isAuthenticate ? push("/profile") :
