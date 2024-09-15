@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SignupForm from "../../Form/SignupForm";
+import SignupForm from "../../../Form/SignupForm";
 
 export default function Signup() {
   return (

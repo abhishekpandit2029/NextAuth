@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
 import { Button } from "@mui/base/Button";
-import LoginForm from "../Auth/Form/LoginForm";
+import LoginForm from "../Form/LoginForm";
 import google from "@/stuff/google.svg";
 import facebook from "@/stuff/facebook.svg";
 import twitter from "@/stuff/twitter.svg";
@@ -16,7 +16,7 @@ export default function SignupModal() {
   const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
   const showModal = () => {
-    isAuthenticate ? push("/profile") :
+    isAuthenticate ? push("/dashboard") :
       setIsModalOpen(true);
   };
 
