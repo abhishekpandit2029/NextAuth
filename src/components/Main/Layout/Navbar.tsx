@@ -110,17 +110,15 @@ function Navbar() {
           </Link> : ""
         }
 
-        {isAuthenticate && <div className="flex space-x-2 items-center">
+        {isAuthenticate && <Dropdown trigger={['click']} menu={{ items }}><div className="flex space-x-1 items-center cursor-pointer">
           <AccountCircleIcon style={{ fontSize: "35px" }} />
           <p className="text-base normal-case font-semibold leading-6 text-gray-900">
             {(meData?.data?.username ?
               meData.data.username.charAt(0).toUpperCase() + meData.data.username.slice(1).toLowerCase()
               : "User")}
           </p>
-          <Dropdown menu={{ items }}>
-            <ExpandMoreIcon />
-          </Dropdown>
-        </div>}
+          <ExpandMoreIcon />
+        </div></Dropdown>}
       </div>
     </nav>
   );

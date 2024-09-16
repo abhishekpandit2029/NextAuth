@@ -2,20 +2,11 @@
 
 import React, { useState } from "react";
 import { Modal } from "antd";
-import { Button } from "@mui/base/Button";
-import LoginForm from "../Form/LoginForm";
-import google from "@/stuff/google.svg";
-import facebook from "@/stuff/facebook.svg";
-import twitter from "@/stuff/twitter.svg";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddToDairyForm from "../Form/AddToDairyForm";
 
-export default function AddToDairy() {
-    const { push } = useRouter();
+export default function AddToDairyModel() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -30,8 +21,11 @@ export default function AddToDairy() {
             <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 cursor-pointer" onClick={showModal}>
                 <AddBoxIcon /> Add New
             </p>
-            <Modal footer={null} open={isModalOpen} onCancel={handleCancel}>
-                <div className="flex flex-col space-y-4 justify-center items-center">
+            <Modal width={"50%"} footer={null} open={isModalOpen} onCancel={handleCancel}>
+                <div className="flex flex-col space-y-4">
+                    <p className="whitespace-nowrap text-xl font-bold leading-6 text-gray-900">
+                        Add Your Thought
+                    </p>
                     <AddToDairyForm />
                 </div>
             </Modal>
