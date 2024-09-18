@@ -5,7 +5,7 @@ import Image from "next/image";
 import google from "@/stuff/google.svg";
 import facebook from "@/stuff/facebook.svg";
 import twitter from "@/stuff/twitter.svg";
-import LoginForm from "../../Form/LoginForm";
+import LoginForm from "../../../Form/LoginForm";
 
 export default function Login() {
   return (

@@ -64,7 +64,7 @@ function Navbar() {
 
   return (
     <nav
-      className="flex items-center justify-between py-4 px-2 lg:px-8"
+      className="flex items-center justify-between pt-4 pb-2 px-2 lg:px-8"
       aria-label="Global"
     >
       <div className="flex items-center ">
@@ -100,27 +100,25 @@ function Navbar() {
           </p>
         </Link>
 
-        {isAuthenticate ||
+        {!isAuthenticate ?
           <Link href="/login">
             <Button
               className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
               Log in
             </Button>
-          </Link>
+          </Link> : ""
         }
 
-        {isAuthenticate && <div className="flex space-x-2 items-center">
+        {isAuthenticate && <Dropdown trigger={['click']} menu={{ items }}><div className="flex space-x-1 items-center cursor-pointer">
           <AccountCircleIcon style={{ fontSize: "35px" }} />
           <p className="text-base normal-case font-semibold leading-6 text-gray-900">
             {(meData?.data?.username ?
               meData.data.username.charAt(0).toUpperCase() + meData.data.username.slice(1).toLowerCase()
               : "User")}
           </p>
-          <Dropdown menu={{ items }}>
-            <ExpandMoreIcon />
-          </Dropdown>
-        </div>}
+          <ExpandMoreIcon />
+        </div></Dropdown>}
       </div>
     </nav>
   );
