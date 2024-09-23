@@ -144,7 +144,7 @@ export default function ProfilePage() {
 
                     </div>
                     <div>
-                        <p>Daily writer sharing personal reflections, experiences, and thoughts. Passionate about self-growth, mindfulness, and capturing life's meaningful moments.</p>
+                        <p>Daily writer sharing personal reflections, experiences, and thoughts. Passionate about self-growth, mindfulness, and capturing life&apos;s meaningful moments.</p>
                         <p> <a href="www.personalportfolio.com">www.personalportfolio.com</a> </p>
                     </div>
                 </div>
