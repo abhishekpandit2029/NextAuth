@@ -46,7 +46,7 @@ export default function SidebarMenu() {
   const logout = async () => {
     try {
       await axios.get("/api/users/logout");
-      localStorage.setItem("isAuthenticate", "false");
+      localStorage.setItem("isAuth", "false");
       message.success("Logout successful");
       push("/login");
     } catch (error: any) {
@@ -67,7 +67,7 @@ export default function SidebarMenu() {
 
   return (
     <>
-      <MenuOpenIcon className="text-3xl mob:text-4xl mr-2" onClick={showDrawer} />
+      <MenuOpenIcon className="text-2xl tab:text-3xl mr-2" onClick={showDrawer} />
       <Drawer
         title={
           <div className="flex items-center ">

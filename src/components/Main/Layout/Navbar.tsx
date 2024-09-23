@@ -13,6 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import type { MenuProps } from 'antd';
 import { message } from "antd"
 import { Button } from "@mui/base/Button";
+import { buttonClassName } from "@/constants/strings";
 
 export interface IMeResponse {
   data: {
@@ -103,7 +104,7 @@ function Navbar() {
         {!isAuthenticate ?
           <Link href="/login">
             <Button
-              className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className={buttonClassName}
             >
               Log in
             </Button>
@@ -120,7 +121,7 @@ function Navbar() {
           <ExpandMoreIcon />
         </div></Dropdown>}
       </div>
-    </nav>
+    </nav >
   );
 }
 

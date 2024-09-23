@@ -1,16 +1,18 @@
 import React from "react";
 import { Modal } from "antd";
 import AddToDairyForm from "../Form/AddToDairyForm";
-import { IEntryData } from "@/app/dashboard/page";
+import { IThoughtCards } from "@/app/dashboard/profile/page";
 
 interface ICardModel {
     handleCancel: () => void;
+    onSave: () => void
+    onCancel: () => void
     isModalOpen: boolean;
-    initialData: IEntryData | undefined
+    initialData: IThoughtCards | undefined
 }
 
 export default function EditCardContentModel(props: ICardModel) {
-    const { handleCancel, isModalOpen, initialData } = props;
+    const { handleCancel, isModalOpen, initialData, onCancel, onSave } = props;
 
     return (
         <>
@@ -24,7 +26,7 @@ export default function EditCardContentModel(props: ICardModel) {
                     <p className="whitespace-nowrap text-xl font-bold leading-6 text-gray-900">
                         Add Your Thought
                     </p>
-                    <AddToDairyForm record={initialData} />
+                    <AddToDairyForm record={initialData} onSave={onSave} onCancel={onCancel} />
                 </div>
             </Modal>
         </>

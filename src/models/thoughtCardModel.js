@@ -13,7 +13,12 @@ const thoughtCardSchema = new mongoose.Schema(
         tags: {
             type: [String],
             default: [],
+            required: false
         },
+        // isSoftDelete: {
+        //     tyep: Boolean,
+        //     default: false
+        // }
     },
     { timestamps: true },
 );

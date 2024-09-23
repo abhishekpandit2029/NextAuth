@@ -9,7 +9,6 @@ const useMe = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/users/me");
-        console.log(response);
         setUserData(response.data);
       } catch (error: any) {
         setError(error);
