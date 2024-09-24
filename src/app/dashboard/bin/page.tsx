@@ -28,7 +28,7 @@ import ProfilePic from "@/stuff/pxfuel.jpg"
 import AddIcon from '@mui/icons-material/Add';
 import { MdOutlineDelete } from "react-icons/md";
 import { MdRestore } from "react-icons/md";
-import NoData from "@/stuff/NoData.svg"
+import NoData from "../../../stuff/Nodata.svg"
 
 export interface IThoughtCards {
     title: string,
