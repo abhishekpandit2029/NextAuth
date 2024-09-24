@@ -55,7 +55,7 @@ export default function DashboardLayout({
                 />
             )}
 
-            <div className="rounded-3xl ring-1 ring-gray-200 lg:flex p-3 tab:p-4 mx-3 tab:mx-4">
+            <div className="rounded-3xl ring-1 ring-gray-200 lg:flex p-3 tab:p-4 mx-3 tab:mx-4 min-h-screen">
                 <div className="rounded-2xl bg-gray-50 ring-1 ring-inset ring-gray-900/5 min-w-[10rem]">
                     <div className="w-full flex-col space-y-6 p-6 hidden lap:flex">
                         <Link href="/dashboard/profile" passHref>
@@ -70,7 +70,7 @@ export default function DashboardLayout({
                                 <span>Feed</span>
                             </p>
                         </Link>
-                        <Link href="/dashboard/tags" passHref>
+                        <Link href="/dashboard/inbox" passHref>
                             <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 cursor-pointer flex items-center space-x-2">
                                 <span><MailOutlinedIcon /> </span>
                                 <span>Inbox</span>

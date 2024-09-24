@@ -1,29 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useGetQuery } from "@/lib/fetcher";
 
-const useMe = () => {
-  const [userData, setUserData] = useState(null);
-  const [error, setError] = useState(null);
+interface IUser {
+  data: {
+    username: string;
+    email: string;
+  }
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/users/me");
-        setUserData(response.data);
-      } catch (error: any) {
-        setError(error);
-      }
-    };
-
-    fetchData();
-
-    // Cleanup function (if needed)
-    // return () => {
-    //     // Cleanup code (if needed)
-    // };
-  }); // Empty dependency array to run effect only once
-
-  return { userData, error };
+export default function useMe() {
+  const { data: userData, isLoading } = useGetQuery<IUser>("/users/me");
+  return { userData, isLoading };
 };
-
-export default useMe;

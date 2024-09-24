@@ -7,7 +7,7 @@ connect();
 export async function PATCH(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { id, title, content, tags } = reqBody;
+        const { id, title, content, tags, isSoftDelete } = reqBody;
 
         // Ensure that an ID is provided
         if (!id) {
@@ -17,7 +17,7 @@ export async function PATCH(request: NextRequest) {
         // Find the thought card by ID and update it
         const updatedThoughtCard = await ThoughtCard.findByIdAndUpdate(
             id,
-            { title, content, tags },
+            { title, content, tags, isSoftDelete },
             { new: true } // Returns the updated document
         );
 
