@@ -13,6 +13,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import type { MenuProps } from 'antd';
 import { message } from "antd"
 import { Button } from "@mui/base/Button";
+import { buttonClassName } from "@/constants/strings";
+import useMe from "@/hooks/useMe";
 
 export interface IMeResponse {
   data: {
@@ -26,19 +28,7 @@ function Navbar() {
   const [meData, setMeData] = useState<IMeResponse | null>(null);
   const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
-  const fetchUserData = async () => {
-    try {
-      const res = await axios.get<IMeResponse>("/api/users/me");
-      setMeData(res.data);
-    } catch {
-      return null
-    }
-  };
-
-  useEffect(() => {
-    fetchUserData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticate]);
+  const { userData } = useMe()
 
   const items: MenuProps['items'] = [
     {
@@ -103,7 +93,7 @@ function Navbar() {
         {!isAuthenticate ?
           <Link href="/login">
             <Button
-              className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className={buttonClassName}
             >
               Log in
             </Button>
@@ -113,14 +103,14 @@ function Navbar() {
         {isAuthenticate && <Dropdown trigger={['click']} menu={{ items }}><div className="flex space-x-1 items-center cursor-pointer">
           <AccountCircleIcon style={{ fontSize: "35px" }} />
           <p className="text-base normal-case font-semibold leading-6 text-gray-900">
-            {(meData?.data?.username ?
-              meData.data.username.charAt(0).toUpperCase() + meData.data.username.slice(1).toLowerCase()
+            {(userData?.data?.username ?
+              userData.data.username.charAt(0).toUpperCase() + userData.data.username.slice(1).toLowerCase()
               : "User")}
           </p>
           <ExpandMoreIcon />
         </div></Dropdown>}
       </div>
-    </nav>
+    </nav >
   );
 }
 

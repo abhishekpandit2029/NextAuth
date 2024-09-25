@@ -7,12 +7,13 @@ connect();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { title, content, tags } = reqBody;
+        const { title, content, tags, isSoftDelete } = reqBody;
 
         const newThoughtCard = new ThoughtCard({
             title,
             content,
             tags,
+            isSoftDelete
         });
 
         const savedThoughtCard = await newThoughtCard.save();

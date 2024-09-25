@@ -25,7 +25,7 @@ export default function LoginForm() {
       const response = await axios.post<ILoginResponse>("/api/users/login", user);
       localStorage.setItem("isAuth", "true");
       message.success(response.data.message);
-      push("/profile");
+      push("/dashboard/profile");
     } catch (error: any) {
       message.error(error.response.data.error);
     }

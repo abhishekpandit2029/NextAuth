@@ -16,7 +16,7 @@
     "@mantine/hooks": "^7.12.1",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
-    "antd": "^5.20.2",
+    "antd": "^5.8.5",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",

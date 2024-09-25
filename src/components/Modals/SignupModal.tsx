@@ -9,6 +9,7 @@ import facebook from "@/stuff/facebook.svg";
 import twitter from "@/stuff/twitter.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { buttonClassName } from "@/constants/strings";
 
 export default function SignupModal() {
   const { push } = useRouter();
@@ -16,7 +17,7 @@ export default function SignupModal() {
   const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
 
   const showModal = () => {
-    isAuthenticate ? push("/dashboard") :
+    isAuthenticate ? push("/dashboard/profile") :
       setIsModalOpen(true);
   };
 
@@ -28,10 +29,10 @@ export default function SignupModal() {
     <>
       <Button
         onClick={showModal}
-        className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        className={buttonClassName}
       >
         Get started
-      </Button>
+      </Button >
       <Modal footer={null} open={isModalOpen} onCancel={handleCancel}>
         <div className="flex flex-col space-y-4 justify-center items-center">
           <LoginForm />

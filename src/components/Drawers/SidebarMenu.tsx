@@ -8,27 +8,14 @@ import DailyQuill from "@/stuff/Red_Illustrated_Bull_Stock_Broker_Logo__1_-remov
 import axios from "axios";
 import { Button } from "@mui/base/Button";
 import { IMeResponse } from "../Main/Layout/Navbar";
+import useMe from "@/hooks/useMe";
 
 export default function SidebarMenu() {
   const { push } = useRouter();
   const [open, setOpen] = useState(false);
   const isHome = useSelectedLayoutSegment()?.includes("home");
-  const [data, setData] = useState<IMeResponse | null>(null);
   const isAuthenticate = typeof window !== 'undefined' ? localStorage?.getItem("isAuth") || "" : null
-
-  const fetchUserData = async () => {
-    try {
-      const res = await axios.get<IMeResponse>("/api/users/me");
-      setData(res.data);
-    } catch {
-      return null
-    }
-  };
-
-  useEffect(() => {
-    fetchUserData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticate]);
+  const { userData } = useMe()
 
   const showDrawer = () => {
     setOpen(true);
@@ -46,7 +33,7 @@ export default function SidebarMenu() {
   const logout = async () => {
     try {
       await axios.get("/api/users/logout");
-      localStorage.setItem("isAuthenticate", "false");
+      localStorage.setItem("isAuth", "false");
       message.success("Logout successful");
       push("/login");
     } catch (error: any) {
@@ -67,15 +54,15 @@ export default function SidebarMenu() {
 
   return (
     <>
-      <MenuOpenIcon className="text-3xl mob:text-4xl mr-2" onClick={showDrawer} />
+      <MenuOpenIcon className="text-2xl tab:text-3xl mr-2" onClick={showDrawer} />
       <Drawer
         title={
           <div className="flex items-center ">
             <a href="/" className="flex space-x-1">
               <Image className="w-16" src={DailyQuill} alt="logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap">
-                {(data?.data?.username ?
-                  (data.data.username.charAt(0).toUpperCase() + data.data.username.slice(1).toLowerCase() + "'s")
+                {(userData?.data?.username ?
+                  (userData.data.username.charAt(0).toUpperCase() + userData.data.username.slice(1).toLowerCase() + "'s")
                   : "User")}{" "}
                 <span className="self-center text-2xl font-semibold whitespace-nowrap">
                   DailyQuill
@@ -117,14 +104,14 @@ export default function SidebarMenu() {
               Subscribe
             </p>
           </Link>
-          {isAuthenticate ||
+          {!isAuthenticate ?
             <Link onClick={onClose} href="/login">
               <Button
                 className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-base font-semibold text-white w-24"
               >
-                Login
+                Log in
               </Button>
-            </Link>
+            </Link> : ""
           }
           {isAuthenticate &&
             <Button onClick={handleLogout}
