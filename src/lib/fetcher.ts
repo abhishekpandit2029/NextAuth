@@ -10,6 +10,7 @@ async function fetcher({ url, init, error }: any) {
             headers: {
                 "Accept-Encoding": "gzip",
                 // Authorization: accessToken ? `Bearer ${accessToken}` : "",
+                'Cache-Control': 'no-store',
                 ...init.headers,
             },
         });

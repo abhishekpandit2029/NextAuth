@@ -16,6 +16,8 @@ interface ICardModel {
 
 export function useCardUpdateMutation(successMessage?: string) {
     const { trigger: update, isMutating } = usePatchMutation("/thoughtcard/updatecarddata", {
+        populateCache: false,
+        revalidate: false,
         onSuccess: () => {
             message.success(successMessage || "Content updated successfully");
             revalidate("/thoughtcard/getcardsdata");
