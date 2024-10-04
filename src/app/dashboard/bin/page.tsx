@@ -43,7 +43,11 @@ interface IGetCardsData {
 
 
 export default function BinPage() {
-    const { data } = useGetQuery<IGetCardsData>("/thoughtcard/getcardsdata");
+    const { data } = useGetQuery<IGetCardsData>("/thoughtcard/getcardsdata", {
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    });
     const BinData = data?.thoughtCards?.filter((items: any) => items?.isSoftDelete === true) || [];
 
     return (

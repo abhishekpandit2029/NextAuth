@@ -19,6 +19,8 @@ export default function AddToDairyModel(props: ICardModel) {
     const { handleCancel, isModalOpen, onCancel, onSave } = props;
 
     const { trigger: create, isMutating } = usePostMutation("/thoughtcard/createcarddata", {
+        populateCache: false,
+        revalidate: false,
         onSuccess: () => {
             message.success("Content created successfully");
             revalidate("/thoughtcard/getcardsdata");

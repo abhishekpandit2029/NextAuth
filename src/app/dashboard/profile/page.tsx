@@ -46,7 +46,11 @@ export default function ProfilePage() {
     const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false);
     const [isCardModalOpen, setCardModalOpen] = useState(false);
 
-    const { data, isLoading } = useGetQuery<IGetCardsData>("/thoughtcard/getcardsdata");
+    const { data, isLoading } = useGetQuery<IGetCardsData>("/thoughtcard/getcardsdata", {
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    });
 
     useEffect(() => {
         if (!isEditCardModalOpen || !isAddNewModalOpen) {
