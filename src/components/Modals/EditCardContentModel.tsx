@@ -5,6 +5,7 @@ import { IThoughtCards } from "@/app/dashboard/profile/page";
 import { usePatchMutation } from "@/lib/fetcher";
 import revalidate from "@/lib/revalidate";
 import { buttonClassName } from "@/constants/strings";
+import useMe from "@/hooks/useMe";
 
 interface ICardModel {
     handleCancel: () => void;
@@ -34,10 +35,11 @@ export default function EditCardContentModel(props: ICardModel) {
     const formRef = useRef<FormInstance>(null);
     const { handleCancel, isModalOpen, initialData, onCancel, onSave } = props;
     const { update, isMutating } = useCardUpdateMutation();
+    const { userData } = useMe()
 
     const onSubmit = () => {
         formRef.current?.validateFields().then((values) => {
-            update({ ...values, id: initialData?._id });
+            update({ ...values, id: initialData?._id, username: userData?.data?.username });
         });
         onCancel();
     };

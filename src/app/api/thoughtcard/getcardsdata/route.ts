@@ -1,19 +1,26 @@
 import { connect } from "@/dbConfig/dbConfig";
-import ThoughtCard from "@/models/thoughtCardModel";
-import { NextResponse } from "next/server";
+import getThoughtCardModel from "@/models/thoughtCardModel";
+import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     try {
-        // Fetch all thought cards from the database
+        const { searchParams } = new URL(request.url);
+        const username = searchParams.get("username");
+
+        if (!username) {
+            return NextResponse.json({ error: "Username is required" }, { status: 400 });
+        }
+
+        const ThoughtCard = getThoughtCardModel(username);
+
         const thoughtCards = await ThoughtCard.find();
 
-        // Return the fetched data as JSON
         return NextResponse.json({
             message: "Thoughts fetched successfully",
             success: true,
-            thoughtCards, // Send the list of thought cards
+            thoughtCards,
         });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });

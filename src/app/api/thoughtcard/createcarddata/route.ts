@@ -1,5 +1,5 @@
 import { connect } from "@/dbConfig/dbConfig";
-import ThoughtCard from "@/models/thoughtCardModel";
+import getThoughtCardModel from "@/models/thoughtCardModel";
 import { NextRequest, NextResponse } from "next/server";
 
 connect();
@@ -7,13 +7,20 @@ connect();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { title, content, tags, isSoftDelete } = reqBody;
+        const { username, title, content, tags, isSoftDelete } = reqBody;
+
+        if (!username) {
+            return NextResponse.json({ error: "Username is required" }, { status: 400 });
+        }
+
+        const ThoughtCard = getThoughtCardModel(username);
 
         const newThoughtCard = new ThoughtCard({
             title,
             content,
             tags,
-            isSoftDelete
+            isSoftDelete,
+            username
         });
 
         const savedThoughtCard = await newThoughtCard.save();

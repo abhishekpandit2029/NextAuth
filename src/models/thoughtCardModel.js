@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const thoughtCardSchema = new mongoose.Schema(
     {
@@ -13,17 +13,24 @@ const thoughtCardSchema = new mongoose.Schema(
         tags: {
             type: [String],
             default: [],
-            required: false
+            required: false,
         },
         isSoftDelete: {
             type: Boolean,
             default: false,
             required: false,
-        }
+        },
+        username: {
+            type: String,
+            required: [true, "Please provide a username"],
+        },
     },
-    { timestamps: true },
+    { timestamps: true }
 );
 
-const ThoughtCard = mongoose.models.thoughtcard || mongoose.model("thoughtcard", thoughtCardSchema);
+const getThoughtCardModel = (username) => {
+    const collectionName = `thoughtcard_${username}`;
+    return mongoose.models[collectionName] || mongoose.model(collectionName, thoughtCardSchema);
+};
 
-export default ThoughtCard;
+export default getThoughtCardModel;

@@ -1,13 +1,9 @@
 "use client";
 
-import type { Metadata } from "next";
 import "@/app/globals.css";
 import { Poppins } from "next/font/google";
-import Dashboardlayout from "@/components/Main/Layout/Dashboardlayout";
 import Link from "next/link";
-import StyleIcon from "@mui/icons-material/Style";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AddBoxIcon from "@mui/icons-material/AddBox";
 import { useState } from "react";
 import AddToDairyModel from "@/components/Modals/AddToDairyModel";
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
@@ -32,26 +28,20 @@ export default function DashboardLayout({
 }>) {
     const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false);
 
-    const handleClickAddNew = () => {
-        setIsAddNewModalOpen(true);
-    };
-
-    const handleCancelAddNew = () => {
-        setIsAddNewModalOpen(false);
-    };
-
-    const handleSaveAddNew = () => {
-        setIsAddNewModalOpen(false);
-    };
-
     return (
         <section>
             {isAddNewModalOpen && (
                 <AddToDairyModel
-                    handleCancel={handleCancelAddNew}
+                    handleCancel={() => {
+                        setIsAddNewModalOpen(false);
+                    }}
                     isModalOpen={isAddNewModalOpen}
-                    onSave={handleSaveAddNew}
-                    onCancel={handleCancelAddNew}
+                    onSave={() => {
+                        setIsAddNewModalOpen(false);
+                    }}
+                    onCancel={() => {
+                        setIsAddNewModalOpen(false);
+                    }}
                 />
             )}
 
@@ -65,13 +55,13 @@ export default function DashboardLayout({
                             </p>
                         </Link>
                         <Link href="/dashboard/feed" passHref>
-                            <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 cursor-pointer flex items-center space-x-2">
+                            <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-500 cursor-not-allowed flex items-center space-x-2">
                                 <span><DynamicFeedIcon /> </span>
                                 <span>Feed</span>
                             </p>
                         </Link>
                         <Link href="/dashboard/inbox" passHref>
-                            <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 cursor-pointer flex items-center space-x-2">
+                            <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-500 cursor-not-allowed flex items-center space-x-2">
                                 <span><MailOutlinedIcon /> </span>
                                 <span>Inbox</span>
                             </p>

@@ -6,6 +6,7 @@ import AddToDairyForm from "../Form/AddToDairyForm";
 import { buttonClassName } from "@/constants/strings";
 import { usePostMutation } from "@/lib/fetcher";
 import revalidate from "@/lib/revalidate";
+import useMe from "@/hooks/useMe";
 
 interface ICardModel {
     handleCancel: () => void;
@@ -16,6 +17,7 @@ interface ICardModel {
 
 export default function AddToDairyModel(props: ICardModel) {
     const formRef = useRef<FormInstance>(null);
+    const { userData } = useMe()
     const { handleCancel, isModalOpen, onCancel, onSave } = props;
 
     const { trigger: create, isMutating } = usePostMutation("/thoughtcard/createcarddata", {
@@ -31,7 +33,7 @@ export default function AddToDairyModel(props: ICardModel) {
 
     const onSubmit = () => {
         formRef.current?.validateFields().then((values) => {
-            create({ ...values, isSoftDelete: false });
+            create({ ...values, isSoftDelete: false, username: userData?.data?.username });
         });
     };
 

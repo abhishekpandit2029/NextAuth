@@ -7,15 +7,18 @@ import { useDeleteMutation } from "@/lib/fetcher";
 import { MdOutlineDelete } from "react-icons/md";
 import { MdOutlineRestore } from "react-icons/md";
 import revalidate from "@/lib/revalidate";
+import useMe from "@/hooks/useMe";
 
 
 export function SoftDeleteAction(record: any) {
     const { update } = useCardUpdateMutation("Content deleted successfully");
+    const { userData } = useMe()
 
     const confirm: PopconfirmProps['onConfirm'] = async () => {
         update({
             id: record?.record?._id,
-            isSoftDelete: true
+            isSoftDelete: true,
+            username: userData?.data?.username
         })
     };
 
@@ -35,12 +38,14 @@ export function SoftDeleteAction(record: any) {
 }
 
 export function RestoreDeleteAction(record: any) {
-    const { update } = useCardUpdateMutation("Content deleted successfully");
+    const { update } = useCardUpdateMutation("Content Restore successfully");
+    const { userData } = useMe()
 
     const confirm: PopconfirmProps['onConfirm'] = async () => {
         update({
             id: record?.record?._id,
-            isSoftDelete: false
+            isSoftDelete: false,
+            username: userData?.data?.username
         })
     };
 
@@ -60,6 +65,7 @@ export function RestoreDeleteAction(record: any) {
 }
 
 export function HardDeleteAction(record: any) {
+    const { userData } = useMe()
     const { trigger } = useDeleteMutation(
         "/thoughtcard/deletecarddata",
         {
@@ -72,7 +78,8 @@ export function HardDeleteAction(record: any) {
 
     const confirm: PopconfirmProps['onConfirm'] = async () => {
         trigger({
-            id: record?.record?._id
+            id: record?.record?._id,
+            username: userData?.data?.username
         })
     };
 
