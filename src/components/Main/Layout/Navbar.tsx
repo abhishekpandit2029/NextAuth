@@ -32,7 +32,7 @@ function Navbar() {
 
   const items: MenuProps['items'] = [
     {
-      label: <a href="/profile" className="text-base font-semibold leading-6 text-gray-900">Profile</a>,
+      label: <a href="/settings/account" className="text-base font-semibold leading-6 text-gray-900">Settings</a>,
       key: '0',
     },
     {
