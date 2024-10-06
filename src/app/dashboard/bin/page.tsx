@@ -1,34 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import StyleIcon from '@mui/icons-material/Style';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import StarsIcon from '@mui/icons-material/Stars';
-import { RxDrawingPin } from "react-icons/rx";
-import { FaRegCopy } from "react-icons/fa6";
-import { CiEdit } from "react-icons/ci";
-import { MdOutlineAutoDelete } from "react-icons/md";
-import AddToDairyModel from "@/components/Modals/AddToDairyModel";
-import EditCardContentModel from "@/components/Modals/EditCardContentModel";
-import { FaRegEdit } from "react-icons/fa";
-import { Divider, message, Tabs, TabsProps } from "antd";
-import axios from "axios";
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import { HardDeleteAction, RestoreDeleteAction, SoftDeleteAction } from "@/components/Dashboard/CardActions";
+import { Divider } from "antd";
+import { HardDeleteAction, RestoreDeleteAction } from "@/components/Dashboard/CardActions";
 import { truncateString } from "@/constants/format";
-import CardViewModel from "@/components/Modals/CardViewModel";
-import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-import useSWR, { SWRConfiguration } from "swr"
 import { useGetQuery } from "@/lib/fetcher";
-import CardSkeleton from "@/components/Dashboard/CardSkeleton";
-import Grid from "@mui/material/Grid";
 import Image from "next/image";
-import ProfilePic from "@/stuff/pxfuel.jpg"
-import AddIcon from '@mui/icons-material/Add';
-import { MdOutlineDelete } from "react-icons/md";
-import { MdRestore } from "react-icons/md";
 import NoData from "../../../stuff/Nodata.svg"
+import useMe from "@/hooks/useMe";
 
 export interface IThoughtCards {
     title: string,
@@ -43,7 +21,8 @@ interface IGetCardsData {
 
 
 export default function BinPage() {
-    const { data } = useGetQuery<IGetCardsData>("/thoughtcard/getcardsdata");
+    const { userData } = useMe()
+    const { data } = useGetQuery<IGetCardsData>(`/thoughtcard/getcardsdata?username=${userData?.data?.username}`);
     const BinData = data?.thoughtCards?.filter((items: any) => items?.isSoftDelete === true) || [];
 
     return (
