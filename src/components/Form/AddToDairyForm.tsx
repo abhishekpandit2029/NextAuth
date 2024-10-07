@@ -59,7 +59,6 @@ export default function AddToDairyForm(props: IAddToDairyFormProps) {
                         />
                     </Form.Item>
                 </div>
-
             </div>
         </Form>
     );

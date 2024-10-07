@@ -28,6 +28,34 @@ const userSchema = new mongoose.Schema(
     forgotPasswordTokenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date,
+    full_name: {
+      type: String,
+      required: false,
+    },
+    additional_name: {
+      type: String,
+      required: false,
+    },
+    pronounce: {
+      type: String,
+      required: false,
+    },
+    bio: {
+      type: String,
+      required: false,
+    },
+    link: {
+      type: String,
+      required: false,
+    },
+    location: {
+      type: String,
+      required: false,
+    },
+    language: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true },
 );

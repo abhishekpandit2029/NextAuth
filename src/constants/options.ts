@@ -1,0 +1,31 @@
+export const languages = [
+    { value: 'englist', label: 'English' },
+    { value: 'assamese', label: 'Assamese' },
+    { value: 'bengali', label: 'Bengali' },
+    { value: 'bodo', label: 'Bodo' },
+    { value: 'dogri', label: 'Dogri' },
+    { value: 'gujarati', label: 'Gujarati' },
+    { value: 'hindi', label: 'Hindi' },
+    { value: 'kashmiri', label: 'Kashmiri' },
+    { value: 'kannada', label: 'Kannada' },
+    { value: 'konkani', label: 'Konkani' },
+    { value: 'maithili', label: 'Maithili' },
+    { value: 'malayalam', label: 'Malayalam' },
+    { value: 'manipuri', label: 'Manipuri' },
+    { value: 'marathi', label: 'Marathi' },
+    { value: 'nepali', label: 'Nepali' },
+    { value: 'oriya', label: 'Oriya' },
+    { value: 'punjabi', label: 'Punjabi' },
+    { value: 'sanskrit', label: 'Sanskrit' },
+    { value: 'santali', label: 'Santali' },
+    { value: 'sindhi', label: 'Sindhi' },
+    { value: 'tamil', label: 'Tamil' },
+    { value: 'telugu', label: 'Telugu' },
+    { value: 'urdu', label: 'Urdu' },
+];
+
+export const pronounce = [
+    { value: 'He/him/his', label: 'He/him/his' },
+    { value: 'She/her/hers', label: 'She/her/hers' },
+    { value: 'They/them/theirs', label: 'They/them/theirs' },
+];
