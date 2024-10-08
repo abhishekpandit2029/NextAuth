@@ -28,7 +28,7 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
             link: record?.data?.link,
             location: record?.data?.location,
         })
-    }, [record])
+    }, [record, form])
 
     return (
         <Form
