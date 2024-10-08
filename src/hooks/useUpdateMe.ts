@@ -1,15 +1,19 @@
-// export function useUpdateMe() {
-//     const { trigger: updateClient, isMutating } =
-//         useTransactionServerPutMutation<TClient>(urlKey, {
-//             onSuccess: () => {
-//                 message.success("Client updated successfully");
-//                 revalidate(urlKey);
-//             },
-//         });
+import { usePatchMutation } from "@/lib/fetcher";
+import revalidate from "@/lib/revalidate";
+import { message } from "antd";
 
-//     return {
-//         data,
-//         updateClient,
-//         loading: isLoading || isMutating,
-//     };
-// }
+export function useUpdateMe() {
+    const { trigger: update, isMutating } = usePatchMutation("/users/updateme", {
+        onSuccess: () => {
+            message.success("Information updated successfully");
+            revalidate("/users/me");
+        },
+        onError: (error) => {
+            message.error(error.message);
+        },
+    });
+    return {
+        update,
+        isMutating,
+    };
+}

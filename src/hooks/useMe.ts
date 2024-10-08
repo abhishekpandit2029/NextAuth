@@ -1,9 +1,21 @@
 import { useGetQuery } from "@/lib/fetcher";
 
-interface IUser {
+export interface IUser {
   data: {
-    username: string;
-    email: string;
+    _id: string,
+    username: string,
+    email: string,
+    isVerfied: boolean,
+    isAdmin: boolean,
+    createdAt: string,
+    updatedAt: string,
+    additional_name: string,
+    bio: string,
+    full_name: string,
+    link: string,
+    location: string,
+    language: string,
+    pronounce: string,
   }
 }
 

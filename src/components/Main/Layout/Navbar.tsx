@@ -89,6 +89,11 @@ function Navbar() {
             Subscribe
           </p>
         </Link>
+        <Link href={"/dashboard/profile"} passHref>
+          <p className="text-base font-semibold leading-6 text-gray-900">
+            Workspace
+          </p>
+        </Link>
 
         {!isAuthenticate ?
           <Link href="/login">

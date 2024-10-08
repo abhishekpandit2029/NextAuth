@@ -5,7 +5,7 @@ import { Poppins } from "next/font/google";
 import Link from "next/link";
 import Person4OutlinedIcon from '@mui/icons-material/Person4Outlined';
 import { IoMdSettings } from "react-icons/io";
-
+import { CgDarkMode } from "react-icons/cg";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -28,7 +28,7 @@ export default function SettingsLayout({
         <section>
             <div className="rounded-3xl ring-1 ring-gray-200 lg:flex p-3 tab:p-4 mx-3 tab:mx-4 min-h-screen">
                 <div className="flex flex-col space-y-4">
-                    <div className="rounded-2xl bg-gray-50 ring-1 ring-inset ring-gray-900/5 min-w-[10rem]">
+                    <div className="rounded-2xl bg-gray-50 ring-1 ring-inset ring-gray-900/5 min-w-[12rem]">
                         <div className="w-full flex-col space-y-6 p-4 hidden lap:flex">
                             <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 flex items-center space-x-2">
                                 <span><IoMdSettings className="text-lg" /> </span>
@@ -36,12 +36,18 @@ export default function SettingsLayout({
                             </p>
                         </div>
                     </div>
-                    <div className="rounded-2xl bg-gray-50 ring-1 ring-inset ring-gray-900/5 min-w-[10rem] h-full">
+                    <div className="rounded-2xl bg-gray-50 ring-1 ring-inset ring-gray-900/5 min-w-[12rem] h-full">
                         <div className="w-full flex-col space-y-5 p-4 hidden lap:flex">
-                            <Link href="/dashboard/profile" passHref>
+                            <Link href="/settings/account" passHref>
                                 <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 cursor-pointer flex items-center space-x-2">
                                     <span><Person4OutlinedIcon /> </span>
                                     <span>Accounts</span>
+                                </p>
+                            </Link>
+                            <Link href="/settings/appearance" passHref>
+                                <p className="whitespace-nowrap text-base font-semibold leading-6 text-gray-900 cursor-pointer flex items-center space-x-2">
+                                    <span><CgDarkMode className="text-xl" /> </span>
+                                    <span>Appearance</span>
                                 </p>
                             </Link>
                         </div>
