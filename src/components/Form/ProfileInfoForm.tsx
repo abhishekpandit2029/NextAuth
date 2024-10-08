@@ -1,10 +1,12 @@
-import React from 'react';
-import { Form, Input, FormInstance } from 'antd';
+import React, { useEffect } from 'react';
+import { Form, Input, FormInstance, Select } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import { IThoughtCards } from '@/app/dashboard/profile/page';
+import { pronouns } from '@/constants/options';
+import { IUser } from '@/hooks/useMe';
+import dayjs from 'dayjs'
 
 interface IAddToDairyFormProps {
-    record: IThoughtCards | undefined
+    record: IUser | undefined
     form?: FormInstance;
     formRef?: React.Ref<FormInstance>;
 }
@@ -12,6 +14,21 @@ interface IAddToDairyFormProps {
 export default function ProfileInfoForm(props: IAddToDairyFormProps) {
     const { record, formRef } = props;
     const [form] = Form.useForm();
+
+    useEffect(() => {
+        form.setFieldsValue({
+            username: record?.data?.username,
+            full_name: record?.data?.full_name,
+            additional_name: record?.data?.additional_name,
+            pronounce: record?.data?.pronounce,
+            bio: record?.data?.bio,
+            email: record?.data?.email,
+            createdAt: dayjs(record?.data?.createdAt)?.format('YYYY-MM-DD - HH:mm:ss'),
+            updatedAt: dayjs(record?.data?.updatedAt)?.format('YYYY-MM-DD - HH:mm:ss'),
+            link: record?.data?.link,
+            location: record?.data?.location,
+        })
+    }, [record])
 
     return (
         <Form
@@ -21,7 +38,7 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
             size="large"
             layout="vertical"
             labelCol={{ className: "font-medium" }}
-            initialValues={record}
+            initialValues={record?.data}
         >
             <div className='flex space-x-4'>
                 <Form.Item
@@ -30,6 +47,8 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
                     className="w-full"
                 >
                     <Input
+                        disabled
+                        style={{ backgroundColor: 'white', color: 'black' }}
                         placeholder="Please Enter Username"
                     />
                 </Form.Item>
@@ -45,7 +64,7 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
             </div>
             <div className='flex space-x-4'>
                 <Form.Item
-                    name="additional name"
+                    name="additional_name"
                     label="Additional Name"
                     className="w-full"
                 >
@@ -55,11 +74,13 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
                 </Form.Item>
                 <Form.Item
                     name="pronounce"
-                    label="Pronounce"
+                    label="Pronouns"
                     className="w-full"
                 >
-                    <Input
-                        placeholder="Please Enter Pronounce"
+                    <Select
+                        placeholder="Select a Pronouns"
+                        value={record?.data?.pronounce}
+                        options={pronouns}
                     />
                 </Form.Item>
             </div>
@@ -70,6 +91,7 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
                     className="w-full"
                 >
                     <TextArea
+                        className='scrollbar-hide'
                         placeholder="Please Enter Bio/Description"
                     />
                 </Form.Item>
@@ -90,6 +112,8 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
                     className="w-full"
                 >
                     <Input
+                        disabled
+                        style={{ backgroundColor: 'white', color: 'black' }}
                         placeholder="Please Enter Email"
                     />
                 </Form.Item>
@@ -110,6 +134,8 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
                     className="w-full"
                 >
                     <Input
+                        disabled
+                        style={{ backgroundColor: 'white', color: 'black' }}
                         placeholder="Please Enter Joined Date"
                     />
                 </Form.Item>
@@ -119,6 +145,8 @@ export default function ProfileInfoForm(props: IAddToDairyFormProps) {
                     className="w-full"
                 >
                     <Input
+                        disabled
+                        style={{ backgroundColor: 'white', color: 'black' }}
                         placeholder="Please Enter Last Update Date"
                     />
                 </Form.Item>

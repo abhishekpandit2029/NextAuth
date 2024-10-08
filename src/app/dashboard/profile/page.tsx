@@ -101,7 +101,7 @@ export default function ProfilePage() {
             <div className="rounded-2xl ring-1 ring-gray-200 lg:flex w-full p-3 tab:p-4">
                 <div className="w-full lap:w-2/3 flex flex-row space-x-4 items-center justify-center">
                     <div className="flex tab:space-x-12 space-y-4 tab:space-y-0 space-x-0 items-center flex-col tab:flex-row">
-                        <Image src={ProfilePic} alt="profile-pic" className="rounded-full w-[16rem]" />
+                        <Image src={ProfilePic} alt="profile-pic" className="rounded-full max-w-[10rem]" />
                         {/* <div className="flex space-x-6">
                             <div className="flex flex-col items-center">
                                 <p className="font-semibold text-lg tab:text-xl">12</p>
@@ -118,9 +118,9 @@ export default function ProfilePage() {
                         </div> */}
                     </div>
                     <div>
-                        <p className="text-xl font-semibold mb-2">Abhishek.Quill</p>
-                        <p className="text-base font-medium text-gray-600">Daily writer sharing personal reflections, experiences, and thoughts. Passionate about self-growth, mindfulness, and capturing life&apos;s meaningful moments.</p>
-                        <a href="www.personalportfolio.com" className="text-base font-medium text-indigo-500">www.personalportfolio.com</a>
+                        <p className="text-xl font-semibold mb-2">{userData?.data?.username}</p>
+                        <p className="text-base font-medium text-gray-600">{userData?.data?.bio}</p>
+                        <a href="www.personalportfolio.com" className="text-base font-medium text-indigo-500">{userData?.data?.link}</a>
                     </div>
                 </div>
             </div>
